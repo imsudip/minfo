@@ -1,6 +1,6 @@
-# qoutes
+# Minfo
 
-A new Flutter project.
+News App built with flutter
 
 ## Getting Started
 
