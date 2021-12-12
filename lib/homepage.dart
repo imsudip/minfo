@@ -300,12 +300,13 @@ class _HomepageState extends State<Homepage> {
                   decoration: BoxDecoration(boxShadow: [
                     BoxShadow(
                         offset: Offset(10, 10),
-                        color: black.withOpacity(0.5),
+                        color: black.withOpacity(0.4),
                         blurRadius: 15)
                   ]),
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(6),
                       child: Container(
+                        color: white2,
                         height: initialHeight,
                         child: Image.network(
                           article.imageUrl,
