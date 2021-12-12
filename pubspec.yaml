@@ -24,13 +24,15 @@ dependencies:
   http: ^0.12.2
   liquid_pull_to_refresh: ^2.0.0
   liquid_progress_indicator: ^0.3.2
-  flutter_zoom_drawer: ^1.0.4+1
+  flutter_zoom_drawer: ^2.1.1
   liquid_swipe: ^1.5.0
   lottie: ^0.7.0+1
-  line_icons: ^0.2.0
-  path_provider: ^1.6.27
+  line_icons: ^2.0.1
+  # path_provider: ^1.6.27
   screenshot: ^0.2.0
   share: ^0.6.5+4
+  introduction_screen: ^1.0.9
+  shared_preferences: ^0.5.12+4
 
 dev_dependencies:
   flutter_test:
@@ -45,7 +47,6 @@ flutter_icons:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -57,6 +58,7 @@ flutter:
     - assets/confetti.json
     - assets/share.json
     - assets/send1.json
+    - assets/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

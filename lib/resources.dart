@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
-class Resourses{
+class Resourses {
   static List<String> catList = [
     'trending',
     'national', //I,ndian News only
@@ -33,17 +33,17 @@ class Resourses{
     'automobile',
   ];
   static List<IconData> iconsList = [
-    LineIcons.newspaper_o,
-    LineIcons.map_marker,
+    LineIcons.newspaper,
+    LineIcons.mapMarker,
     LineIcons.briefcase,
-    LineIcons.futbol_o,
+    LineIcons.futbol,
     LineIcons.globe,
     LineIcons.bullhorn,
     LineIcons.laptop,
-    LineIcons.building_o,
-    LineIcons.video_camera,
+    LineIcons.building,
+    LineIcons.video,
     LineIcons.paperclip,
-    LineIcons.shekel,
+    LineIcons.angellist,
     LineIcons.flask,
     LineIcons.car
   ];
@@ -61,6 +61,7 @@ class Resourses{
     Color(0xffec4343),
   ];
 }
+
 class CustomPageRoute extends MaterialPageRoute {
   @override
   Duration get transitionDuration => const Duration(milliseconds: 1500);

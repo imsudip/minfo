@@ -59,7 +59,7 @@ class _CompletedPageState extends State<CompletedPage> {
                           Lottie.asset('assets/complete.json', repeat: false),
                     ),
                     Positioned(
-                      bottom: MediaQuery.of(context).size.height*0.3,
+                      bottom: MediaQuery.of(context).size.height * 0.3,
                       left: 20,
                       right: 20,
                       child: Center(
@@ -99,12 +99,15 @@ class _CompletedPageState extends State<CompletedPage> {
                               "Explore Other Sections ",
                               style: subtitle1,
                             ),
-                            Icon(LineIcons.arrow_right,color: Colors.white,)
+                            Icon(
+                              LineIcons.arrowRight,
+                              color: Colors.white,
+                            )
                           ],
                         ),
                       ),
                     ),
-                    // 
+                    //
                   ],
                 ),
               )),
@@ -158,7 +161,7 @@ class _CompletedPageState extends State<CompletedPage> {
                   width: 60,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle, color: Colors.orange),
-                  child: Icon(LineIcons.close),
+                  child: Icon(LineIcons.times),
                 ),
               ),
             ]),

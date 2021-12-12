@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 import 'package:line_icons/line_icons.dart';
@@ -43,7 +44,9 @@ class _HomepageState extends State<Homepage> {
 
   _onShare() async {
     screenshotController.capture(pixelRatio: 2).then((val) {
-      return Share.shareFiles([val.path], text: 'Checkout this latest news from #minfo')
+      // File image = File.fromRawPath(val);
+      return Share.shareFiles([val.path],
+              text: 'Checkout this latest news from #minfo')
           .whenComplete(() {
         setState(() {
           isShareVisible = false;
@@ -59,9 +62,10 @@ class _HomepageState extends State<Homepage> {
       menuScreen: _buildMenu(),
       borderRadius: 24.0,
       showShadow: true,
-      angle: -3,
+      isRtl: true,
+      angle: -12,
       backgroundColor: Colors.grey[300],
-      slideWidth: MediaQuery.of(context).size.width * -.39,
+      slideWidth: MediaQuery.of(context).size.width * .39,
       openCurve: Curves.fastOutSlowIn,
       closeCurve: Curves.easeInBack,
       mainScreen: Scaffold(
@@ -113,7 +117,7 @@ class _HomepageState extends State<Homepage> {
                         child: LiquidSwipe(
                             enableLoop: false,
                             waveType: WaveType.liquidReveal,
-                            fullTransitionValue: 500,
+                            fullTransitionValue: 300,
                             initialPage: 0,
                             onPageChangeCallback: (i) {
                               setState(() {
@@ -196,6 +200,7 @@ class _HomepageState extends State<Homepage> {
                           textAlign: TextAlign.end,
                           style: subtitle1.copyWith(color: black),
                         ),
+                        dense: true,
                         trailing: Icon(
                           Resourses.iconsList[index],
                           color: black,
@@ -213,7 +218,7 @@ class _HomepageState extends State<Homepage> {
                   width: 60,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle, color: Colors.orange),
-                  child: Icon(LineIcons.close),
+                  child: Icon(LineIcons.times),
                 ),
               ),
             ]),
@@ -248,6 +253,24 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         backgroundColor: color,
         elevation: 0,
+        leading: Icon(
+          LineIcons.safari,
+          color: Colors.transparent,
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(LineIcons.share),
+            onPressed: () {
+              print("dtap");
+              setState(() {
+                isShareVisible = true;
+              });
+              Future.delayed(Duration(seconds: 2), () {
+                _onShare();
+              });
+            },
+          )
+        ],
         title: Center(
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 4, horizontal: 20),
