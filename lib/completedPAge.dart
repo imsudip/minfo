@@ -121,50 +121,52 @@ class _CompletedPageState extends State<CompletedPage> {
       color: white,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              ...List.generate(
-                  Resourses.catList.length,
-                  (index) => ListTile(
-                        tileColor: widget.wasSelected != null &&
-                                widget.wasSelected == index
-                            ? Colors.grey.withOpacity(0.3)
-                            : Colors.transparent,
-                        onTap: () {
-                          _drawerController.toggle();
-                          Navigator.pushReplacement(
-                              context,
-                              CustomPageRoute(
-                                  builder: (context) => Homepage(
-                                        selected: index,
-                                      )));
-                        },
-                        title: Text(
-                          Resourses.catList[index].toUpperCase(),
-                          textAlign: TextAlign.end,
-                          style: subtitle1.copyWith(color: black),
-                        ),
-                        trailing: Icon(
-                          Resourses.iconsList[index],
-                          color: black,
-                        ),
-                      )),
-              InkWell(
-                onTap: () {
-                  _drawerController.toggle();
-                },
-                child: Container(
-                  height: 60,
-                  width: 60,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.orange),
-                  child: Icon(LineIcons.times),
+        child: SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                ...List.generate(
+                    Resourses.catList.length,
+                    (index) => ListTile(
+                          tileColor: widget.wasSelected != null &&
+                                  widget.wasSelected == index
+                              ? Colors.grey.withOpacity(0.3)
+                              : Colors.transparent,
+                          onTap: () {
+                            _drawerController.toggle();
+                            Navigator.pushReplacement(
+                                context,
+                                CustomPageRoute(
+                                    builder: (context) => Homepage(
+                                          selected: index,
+                                        )));
+                          },
+                          title: Text(
+                            Resourses.catList[index].toUpperCase(),
+                            textAlign: TextAlign.end,
+                            style: subtitle1.copyWith(color: black),
+                          ),
+                          trailing: Icon(
+                            Resourses.iconsList[index],
+                            color: black,
+                          ),
+                        )),
+                InkWell(
+                  onTap: () {
+                    _drawerController.toggle();
+                  },
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.orange),
+                    child: Icon(LineIcons.times),
+                  ),
                 ),
-              ),
-            ]),
+              ]),
+        ),
       ),
     );
   }

@@ -179,49 +179,51 @@ class _HomepageState extends State<Homepage> {
       color: white2,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              ...List.generate(
-                  Resourses.catList.length,
-                  (index) => ListTile(
-                        onTap: () {
-                          _drawerController.toggle();
-                          setState(() {
-                            selected = index;
-                            pages = [];
-                            isvisible = !isvisible;
-                            _generatePages();
-                          });
-                        },
-                        title: Text(
-                          Resourses.catList[index].toUpperCase(),
-                          textAlign: TextAlign.end,
-                          style: subtitle1.copyWith(color: black),
-                        ),
-                        dense: true,
-                        trailing: Icon(
-                          Resourses.iconsList[index],
-                          color: black,
-                        ),
-                      )),
-              InkWell(
-                onTap: () {
-                  _drawerController.toggle();
-                  setState(() {
-                    isvisible = !isvisible;
-                  });
-                },
-                child: Container(
-                  height: 60,
-                  width: 60,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.orange),
-                  child: Icon(LineIcons.times),
+        child: SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                ...List.generate(
+                    Resourses.catList.length,
+                    (index) => ListTile(
+                          onTap: () {
+                            _drawerController.toggle();
+                            setState(() {
+                              selected = index;
+                              pages = [];
+                              isvisible = !isvisible;
+                              _generatePages();
+                            });
+                          },
+                          title: Text(
+                            Resourses.catList[index].toUpperCase(),
+                            textAlign: TextAlign.end,
+                            style: subtitle1.copyWith(color: black),
+                          ),
+                          dense: true,
+                          trailing: Icon(
+                            Resourses.iconsList[index],
+                            color: black,
+                          ),
+                        )),
+                InkWell(
+                  onTap: () {
+                    _drawerController.toggle();
+                    setState(() {
+                      isvisible = !isvisible;
+                    });
+                  },
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.orange),
+                    child: Icon(LineIcons.times),
+                  ),
                 ),
-              ),
-            ]),
+              ]),
+        ),
       ),
     );
   }
@@ -290,63 +292,65 @@ class _HomepageState extends State<Homepage> {
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.symmetric(horizontal: 28),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AspectRatio(
-                aspectRatio: 1,
-                child: Container(
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                        offset: Offset(10, 10),
-                        color: black.withOpacity(0.4),
-                        blurRadius: 15)
-                  ]),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: Container(
-                        color: white2,
-                        height: initialHeight,
-                        child: Image.network(
-                          article.imageUrl,
-                          loadingBuilder: (BuildContext context, Widget child,
-                              ImageChunkEvent loadingProgress) {
-                            if (loadingProgress == null) {
-                              initialHeight =
-                                  MediaQuery.of(context).size.width * 0.6;
-                              return child;
-                            }
-                            return Container(
-                              child: Center(
-                                  child: CircularProgressIndicator(
-                                value: loadingProgress.expectedTotalBytes !=
-                                        null
-                                    ? loadingProgress.cumulativeBytesLoaded /
-                                        loadingProgress.expectedTotalBytes
-                                    : null,
-                              )),
-                            );
-                          },
-                          fit: BoxFit.cover,
-                        ),
-                      )),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AspectRatio(
+                  aspectRatio: 1,
+                  child: Container(
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(
+                          offset: Offset(10, 10),
+                          color: black.withOpacity(0.4),
+                          blurRadius: 15)
+                    ]),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(6),
+                        child: Container(
+                          color: white2,
+                          height: initialHeight,
+                          child: Image.network(
+                            article.imageUrl,
+                            loadingBuilder: (BuildContext context, Widget child,
+                                ImageChunkEvent loadingProgress) {
+                              if (loadingProgress == null) {
+                                initialHeight =
+                                    MediaQuery.of(context).size.width * 0.6;
+                                return child;
+                              }
+                              return Container(
+                                child: Center(
+                                    child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes
+                                      : null,
+                                )),
+                              );
+                            },
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              Text(
-                article.title,
-                style: headline.copyWith(
-                    color: color.computeLuminance() > 0.5 ? black : white),
-              ),
-              Text(
-                article.content,
-                style: body1.copyWith(
-                    color: color.computeLuminance() > 0.5 ? black : white),
-              )
-            ],
+                SizedBox(
+                  height: 24,
+                ),
+                Text(
+                  article.title,
+                  style: headline.copyWith(
+                      color: color.computeLuminance() > 0.5 ? black : white),
+                ),
+                Text(
+                  article.content,
+                  style: body1.copyWith(
+                      color: color.computeLuminance() > 0.5 ? black : white),
+                )
+              ],
+            ),
           ),
         ),
       ),
